@@ -27,17 +27,20 @@ public class MainActivity extends Activity {
     ProgressDialog mProgressDialog;
     String iiit_d_about = "https://www.iiitd.ac.in/about";
     TextView tv_data_container;
+    Button btn_get_data;
 
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState){
         super.onRestoreInstanceState(savedInstanceState);
         String data = savedInstanceState.getString("text_field_content");
         tv_data_container.setText(data);
+        btn_get_data.setText(savedInstanceState.getString("btn_field_content"));
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
         savedInstanceState.putString("text_field_content", tv_data_container.getText().toString());
+        savedInstanceState.putString("btn_field_content", btn_get_data.getText().toString());
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -46,7 +49,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv_data_container = (TextView)findViewById(R.id.tv_data_container);
-        final Button btn_get_data = (Button)findViewById(R.id.btn_get_data);
+        btn_get_data = (Button)findViewById(R.id.btn_get_data);
         btn_get_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
